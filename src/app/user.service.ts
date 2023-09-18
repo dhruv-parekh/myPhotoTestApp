@@ -142,6 +142,7 @@ export class UserService {
         localStorage.removeItem('email');
         // or
         // localStorage.clear(); 
+        //test
         this.router.navigate(['/login']);
       },
       error => {
