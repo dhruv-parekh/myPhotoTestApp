@@ -1,0 +1,31 @@
+
+
+<!-- Hello {{name}}, want to create an album?
+<input type="text" [(ngModel)]='answer'>
+your answer= {{answer}} -->
+
+<div style="margin: auto; width: 400px;">
+
+    <h4 class="display-4">Create Album</h4>
+<div class="form-outline mb-4">
+    <label class="form-label" for="form2Example1"  >Album Name</label>
+    <input type="text"  class="form-control" [(ngModel)]="albumTitle" required="required" />
+    
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example1"  >Album Information</label>
+    <input type="text"  class="form-control" [(ngModel)]="albumDescription" [disabled]="!albumTitle" required="required" />
+    
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example1"  >Album Cover</label>
+    <input type="file"  class="form-control" [disabled]="!albumTitle"  (change)="saveAlbumCoverPicFile($event)"/>
+  </div>
+
+  <button type="button" class="btn btn-primary btn-block mb-4" (click)="saveAlbum()" >Create Album</button>
+
+</div>
+

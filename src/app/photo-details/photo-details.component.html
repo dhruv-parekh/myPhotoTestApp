@@ -1,0 +1,42 @@
+
+<div class="dropdown" style="padding-right: 100px;padding-top: 50px;float: right;">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Photo Options
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" (click)="updateUserProfilePic()"> Make Phtot Profile Picture</a></li>
+      <li><a class="dropdown-item"  (click)="updateAlbumCoverPicture()">Make Photo Album Cover Picture</a></li>
+      <li><button class="dropdown-item" style="background-color: red;" (click)="deletePhoto()">Delete This Photo</button></li>
+    </ul>
+</div>
+
+
+<div style="margin: auto; width: 700px; padding-top: 20px;" *ngIf="photo">
+    <img [src]="photo.photoUrl" class="rounded" style="width: 700px;">
+
+</div>
+<br>
+
+
+<h3 style="margin: auto; width: 680px; padding-bottom: 10px;"> Comments </h3>
+
+<div class="form-group " style="margin: auto; width: 700px; padding-bottom: 10px;padding-right: 15px;padding-left: 15px;" >
+
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="newComment"></textarea>
+    
+  </div> 
+  <div style="margin: auto; width: 700px;padding-right: 15px;">
+  <button class="btn btn-primary float-end"  style="right: inherit;" [disabled]="!newComment" (click)="postComment()" >Post Comment</button>
+  </div>
+  <br><br>
+
+<div  style="margin: auto; width: 700px;" *ngIf="allComments">
+    <div style="margin: auto; width: 150px; padding-bottom: 15px;">
+    <button class="btn btn-danger"  style="right: inherit;"  (click)="reverseComments()" > Change Order </button>
+    </div>
+    
+    <div class="alert alert-primary" style="text-align: right;" role="alert" *ngFor="let comment of allComments">
+       {{comment.message}} -- {{comment.createdBy}} -- {{comment.dateCreated}}
+    </div>
+
+</div>

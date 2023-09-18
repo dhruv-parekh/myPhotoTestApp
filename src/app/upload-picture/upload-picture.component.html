@@ -1,0 +1,21 @@
+<!-- <p>upload-picture works!</p>
+
+<button (click)="countUploaded()" >Click to upload picture</button>
+Uploaded pictures= {{counter}}
+
+<h1>here is albumId= {{albumId}}</h1> -->
+
+<div style="margin: auto; width: 400px;">
+
+    <h4 class="display-4">Upload Photo</h4>
+    
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <!-- <label class="form-label" for="form2Example1"  >Photo to be uploaded</label> -->
+    <input type="file"  class="form-control"  (change)="uploadPhotoToAWS($event)" />
+  </div>
+
+  <button type="button" class="btn btn-primary btn-block mb-4" (click)="uploadPhotoToAlbum()"  [disabled]="!file" >Upload Photo</button>
+
+</div>

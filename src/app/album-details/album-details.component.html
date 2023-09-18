@@ -1,0 +1,30 @@
+
+<br>
+
+<div class="dropdown" style="padding-right: 100px;padding-top: 50px;float: right;">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Album Options
+  </button>
+  <ul class="dropdown-menu">
+   
+    <li><button class="dropdown-item" style="background-color: red;" (click)="deleteAlbum()" >Delete This Album</button></li>
+  </ul>
+</div>
+
+<div class="" style="margin: auto;width: 150px;">
+<a class="btn btn-outline-success" [routerLink]="['/upload/',albumId]">Upload More Pictures</a>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-3 pt-3" *ngFor="let albumPhoto of albumPhotos">
+        <div class="card" style="width: 14rem;">
+            <img class="card-img-top" [src]="albumPhoto.photoUrl" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">taken by: {{albumPhoto.createdBy}}</h5>
+              <p class="card-text">{{albumPhoto.dateCreated}}</p>
+              <a [routerLink]="['/photo/',albumPhoto.id]" class="btn btn-primary">View Photo</a>
+            </div>
+          </div>
+    </div>
+
+  </div>

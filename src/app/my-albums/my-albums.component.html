@@ -1,0 +1,26 @@
+
+
+<div style="margin: auto; width: 400px;">
+    <h2 >My Albums</h2>
+    <div   style="padding-right: 100px;padding-top: 50px;">
+          
+      <a class="btn btn-outline-success" style="right: inherit;" [routerLink]="(['/create'])" >Create Album</a>
+    
+      <br>
+    </div>
+    </div>
+    <div class="row" style="margin: auto;">
+        <div class="col-sm-3 pt-3" *ngFor="let album of albums">
+            <div class="card" style="width: 14rem;">
+                <img class="card-img-top" [src]="album.coverPicUrl" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{album.name}}</h5>
+                  <p class="card-text"><b>Created By: </b>{{album.createdBy}}</p>
+                  <p class="card-text">{{album.description}}</p>
+                  <a [routerLink]="['/albums/',album.albumId]" class="btn btn-primary">Go To Album</a>
+                </div>
+              </div>
+        </div>
+ 
+      </div>
+    

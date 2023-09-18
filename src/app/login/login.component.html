@@ -1,0 +1,127 @@
+
+
+<div style="width: 400px; margin: auto;" *ngIf="signInVisible; else signUpForm">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"  (click)="makeSignInFormVisible()">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"   (click)="makeSignUpFormVisible()" >Sign up</a>
+        </li>
+      </ul>
+    
+      
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Email address</label>
+      <input type="email" [(ngModel)]="email"  id = "form2Example1" class="form-control" />
+      
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Password</label>
+      <input type="password" [(ngModel)]="password" id="form2Example2" class="form-control" />
+      
+    </div>
+  
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+       
+      <div class="col">
+        <!-- Simple link -->
+        <a href="#!">Forgot password?</a>
+      </div>
+    </div>
+  
+    <!-- Submit button -->
+    <button type="button" class="btn btn-primary btn-block mb-4" (click)="logIn()">Sign in</button>
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+    </div>
+  
+
+
+</div>
+
+<ng-template #signUpForm>
+<div style="width: 400px; margin: auto;" >
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" (click)="makeSignInFormVisible()">Sign in</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" (click)="makeSignUpFormVisible()">Sign up</a>
+          
+        </li>
+      </ul>
+   
+      
+    <form [formGroup]="registrationForm" (ngSubmit)="signUpTest()">
+       <!-- First Name input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">First Name</label>  
+      <!-- <input type="text"  [(ngModel)]="firstName"   class="form-control" formControlName="firstName" /> -->
+      <input type="text"    class="form-control" [(ngModel)]="firstName"  formControlName="firstName1" />
+      <span class="text-danger" *ngIf="firstName1 && firstName1.invalid && firstName1.touched" >Invalid first name. Valid sample value: John</span>
+        
+    </div>
+    
+       <!-- Last Name input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Last Name</label>
+        <input type="text" [(ngModel)]="lastName"  class="form-control" formControlName="lastName1" />
+        <span class="text-danger" *ngIf="lastName1 && lastName1.invalid && lastName1.touched" >Invalid last name. Valid sample value: Doe</span>
+    </div>
+      <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Email address</label>
+      <input type="email" [(ngModel)]="email" id="form2Example1" class="form-control"  formControlName="email1" />
+      <span class="text-danger" *ngIf="email1 && email1.invalid && email1.touched">Invalid email value.</span>
+    </div>
+
+    <!-- Phone number input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Phone number</label>
+      <input type="text" [(ngModel)]="phoneNumber" id="form2Example1" class="form-control" formControlName="phoneNumber1" />
+      <span class="text-danger" *ngIf="phoneNumber1 && phoneNumber1.invalid && phoneNumber1.touched" >Invalid phone number. Valid sample value: +1234567890</span>
+    </div>
+
+    <!-- Website input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Website</label>
+      <input type="text" [(ngModel)]="website" id="form2Example1" class="form-control" formControlName="website1"/>
+      <span class="text-danger" *ngIf="website1 && website1.invalid && website1.touched" >Invalid website address. value should start with http:// or https://</span>
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Password</label>
+      <input type="password" [(ngModel)]="password" id="form2Example2" class="form-control" formControlName="password1" />
+      <span class="text-danger" *ngIf="password1 && password1.invalid && password1.touched" >Invalid password. Minumum length:6</span>
+      
+    </div>
+     <!-- Confirm password -->
+     <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Confirm Password</label>
+        <input type="password" id="form2Example2" class="form-control" />
+        
+      </div>
+  
+    <!-- Submit button -->
+    <input type="submit" [disabled]="registrationForm.invalid" class="btn btn-primary btn-block mb-4" value="Sign Up">
+    <!-- <button type="button" class="btn btn-primary btn-block mb-4" (click)="signUp()" >Sign Up</button> -->
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+    </div>
+  </form>
+
+
+
+
+</div>
+
+</ng-template>
